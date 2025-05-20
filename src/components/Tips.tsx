@@ -83,7 +83,7 @@ const Tips: React.FC = () => {
   return (
     <section 
       id="conseils" 
-      className="py-20 bg-emerald-50"
+      className="py-20 bg-white text-gray-800"
     >
       <div 
         ref={sectionRef}
