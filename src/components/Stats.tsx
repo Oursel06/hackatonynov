@@ -1,5 +1,51 @@
-import React from 'react';
-import { DollarSign, Trash2, Wind, Apple } from 'lucide-react';
+import React, { useState } from 'react';
+import { DollarSign, Trash2, Wind, Apple, X } from 'lucide-react';
+
+const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] bg-black"
+      style={{
+        touchAction: 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh'
+      }}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[10000]"
+        style={{ position: 'fixed' }}
+      >
+        <X size={32} />
+      </button>
+      <div className="fixed inset-0 flex items-center justify-center">
+        <video
+          className="max-w-[100vw] max-h-[100vh] w-auto h-auto"
+          controls
+          autoPlay
+          src="/HACKATHON_VIDEO.mp4"
+          onEnded={onClose}
+        />
+      </div>
+    </div>
+  );
+};
 
 const StatItem: React.FC<{
   label: string;
@@ -26,6 +72,8 @@ const StatItem: React.FC<{
 };
 
 const Stats: React.FC = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <section id="statistiques" className="py-16 bg-receipt-paper">
       <div className="container mx-auto px-4 max-w-3xl">
@@ -66,12 +114,13 @@ const Stats: React.FC = () => {
         </div>
 
         <div className="mt-12 bg-receipt-text/5 p-6 rounded-lg border-2 border-dashed border-receipt-border">
-          <div className="font-receipt text-receipt-text">
-            <p className="text-2xl mb-4">NOTE IMPORTANTE:</p>
-            <p className="text-xl text-receipt-text/80">
-              Si le gaspillage alimentaire était un pays, il serait le 3ème plus grand émetteur de gaz à effet de serre après la Chine et les États-Unis.
-            </p>
-            <p className="mt-4 text-center">*********************</p>
+          <div className="font-receipt text-receipt-text text-center">
+            <button
+              onClick={() => setIsVideoOpen(true)}
+              className="text-2xl bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-8 py-3 rounded-lg transition-colors"
+            >
+              FACTURE VISUELLE
+            </button>
           </div>
         </div>
 
@@ -82,6 +131,8 @@ const Stats: React.FC = () => {
           <p>--------------------------------</p>
         </div>
       </div>
+
+      <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
     </section>
   );
 };
