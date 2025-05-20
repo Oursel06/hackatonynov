@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
   return (
       <section
           id="accueil"
-          className="relative w-full h-screen bg-gradient-to-br from-emerald-800 via-emerald-700 to-emerald-900 overflow-hidden"
+          className="relative w-full bg-gradient-to-br from-emerald-800 via-emerald-700 to-emerald-900 overflow-hidden"
       >
         <div
             ref={containerRef}

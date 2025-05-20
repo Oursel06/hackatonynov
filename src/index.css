@@ -19,6 +19,10 @@ header {
   height: 8dvh;
 }
 
+#accueil {
+
+}
+
 .headings {
   width: 100%;
   top: 30%;
@@ -38,6 +42,9 @@ header {
   text-shadow: 0 1px 4px #000000;
 
 }
+
+
+
 
 
 /* Scrollbar customization */
