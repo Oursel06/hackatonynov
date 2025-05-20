@@ -38,10 +38,10 @@ function App() {
           <p className="font-receipt text-sm text-receipt-text">
             ================================
           </p>
-          <p className="font-receipt text-receipt-text">
+          <p className="font-receipt text-xl text-receipt-text">
             Reçu pour un monde sans gaspillage
           </p>
-          <p className="font-receipt text-xs text-receipt-text">
+          <p className="font-receipt text-l text-receipt-text">
             {new Date().toLocaleDateString('fr-FR', {
               year: 'numeric',
               month: 'long',
@@ -85,7 +85,7 @@ function App() {
           <p className="font-receipt text-sm text-receipt-text">
             ================================
           </p>
-          <p className="font-receipt text-receipt-text">Merci de votre engagement</p>
+          <p className="font-receipt text-xl text-receipt-text">Merci de votre engagement</p>
           
           {/* Code-barres de fin */}
           <div className="mt-4 flex justify-center gap-1">

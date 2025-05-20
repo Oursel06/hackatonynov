@@ -64,7 +64,7 @@ const Tips: React.FC = () => {
         <div className="text-center font-receipt text-receipt-text mb-12">
           <p>================================</p>
           <h2 className="text-3xl my-4">COUPONS CONSEILS</h2>
-          <p>DÉCOUPEZ ET CONSERVEZ</p>
+          <p className="text-2xl my-4">DÉCOUPEZ ET CONSERVEZ</p>
           <p>================================</p>
         </div>
         
@@ -101,7 +101,7 @@ const Tips: React.FC = () => {
           className="bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-8 py-3 rounded-lg transition-colors">
             TÉLÉCHARGER LE GUIDE COMPLET
           </button>
-          <p className="mt-4 text-xs text-receipt-text/60">
+          <p className="mt-4 text-lg text-receipt-text/60">
             * Ces conseils sont valables sans limitation de durée
           </p>
         </div>

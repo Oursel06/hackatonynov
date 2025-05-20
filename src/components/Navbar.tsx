@@ -22,12 +22,12 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => 
         <div className="flex justify-between items-center">
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 mx-auto">
-            <a href="#accueil" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">ACCUEIL</a>
-            <a href="#impact" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">IMPACT</a>
-            <a href="#statistiques" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">STATS</a>
-            <a href="#quiz" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">QUIZ</a>
-            <a href="#conseils" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">CONSEILS</a>
-            <a href="#associations" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors" onClick={handleDownload}>AGIR</a>
+            <a href="#accueil" className="font-receipt text-xl text-receipt-text hover:text-emerald-600 transition-colors">ACCUEIL</a>
+            <a href="#impact" className="font-receipt text-xl text-receipt-text hover:text-emerald-600 transition-colors">IMPACT</a>
+            <a href="#statistiques" className="font-receipt text-xl text-receipt-text hover:text-emerald-600 transition-colors">STATS</a>
+            <a href="#quiz" className="font-receipt text-xl text-receipt-text hover:text-emerald-600 transition-colors">QUIZ</a>
+            <a href="#conseils" className="font-receipt text-xl text-receipt-text hover:text-emerald-600 transition-colors">CONSEILS</a>
+            <a href="#associations" className="font-receipt text-xl text-receipt-text hover:text-emerald-600 transition-colors" onClick={handleDownload}>AGIR</a>
           </div>
           
           {/* Mobile Menu Button */}

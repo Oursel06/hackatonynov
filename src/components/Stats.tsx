@@ -19,7 +19,7 @@ const StatItem: React.FC<{
         <span className="text-xl">{value}</span>
       </div>
       {sublabel && (
-        <p className="text-sm text-right pr-2">{sublabel}</p>
+        <p className="text-lg text-right pr-2">{sublabel}</p>
       )}
     </div>
   );
@@ -35,7 +35,7 @@ const Stats: React.FC = () => {
           <p>================================</p>
         </div>
 
-        <div className="space-y-8">
+        <div className="text-xl space-y-8">
           <StatItem
             icon={<Trash2 />}
             label="NOURRITURE GASPILLÉE"
@@ -67,8 +67,8 @@ const Stats: React.FC = () => {
 
         <div className="mt-12 bg-receipt-text/5 p-6 rounded-lg border-2 border-dashed border-receipt-border">
           <div className="font-receipt text-receipt-text">
-            <p className="text-lg mb-4">NOTE IMPORTANTE:</p>
-            <p className="text-receipt-text/80">
+            <p className="text-2xl mb-4">NOTE IMPORTANTE:</p>
+            <p className="text-xl text-receipt-text/80">
               Si le gaspillage alimentaire était un pays, il serait le 3ème plus grand émetteur de gaz à effet de serre après la Chine et les États-Unis.
             </p>
             <p className="mt-4 text-center">*********************</p>
@@ -78,7 +78,7 @@ const Stats: React.FC = () => {
         {/* Bordures pointillées */}
         <div className="mt-8 font-receipt text-receipt-text text-center">
           <p>--------------------------------</p>
-          <p className="text-sm my-2">FIN DU DÉTAIL</p>
+          <p className="text-xl my-2">FIN DU DÉTAIL</p>
           <p>--------------------------------</p>
         </div>
       </div>

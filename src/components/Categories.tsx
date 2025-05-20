@@ -150,7 +150,7 @@ const Categories: React.FC = () => {
 					<BarChart className="w-8 h-8 mx-auto mb-4" />
 					<p>================================</p>
 					<h2 className="text-3xl my-4">RAPPORT D'IMPACT</h2>
-					<p>CONSÉQUENCES DU GASPILLAGE</p>
+					<p className="text-xl">CONSÉQUENCES DU GASPILLAGE</p>
 					<p>================================</p>
 					{/* Code-barres décoratif */}
 					<div className="mt-4 flex justify-center gap-1">
@@ -208,7 +208,7 @@ const Categories: React.FC = () => {
 										********************************
 									</p>
 
-									<div className="prose prose-lg max-w-none prose-receipt">
+									<div className="text-xl prose prose-lg max-w-none prose-receipt">
 										<ReactMarkdown>{categories[currentIndex].description}</ReactMarkdown>
 									</div>
 

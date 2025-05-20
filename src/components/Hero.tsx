@@ -31,9 +31,9 @@ const Hero: React.FC = () => {
 
             <div className="space-y-4 font-receipt text-receipt-text">
               <p>--------------------------------</p>
-              <p className="text-lg">CHAQUE ANNÉE DANS LE MONDE:</p>
-              <p>1.3 MILLIARD DE TONNES GASPILLÉES</p>
-              <p>VALEUR: 20 MILLIARDS EUR</p>
+              <p className="text-xl">CHAQUE ANNÉE DANS LE MONDE:</p>
+              <p className="text-xl">1.3 MILLIARD DE TONNES GASPILLÉES</p>
+              <p className="text-xl">VALEUR: 20 MILLIARDS EUR</p>
               <p>--------------------------------</p>
             </div>          
           </div>
