@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => 
             <a href="#statistiques" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">STATS</a>
             <a href="#quiz" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">QUIZ</a>
             <a href="#conseils" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">CONSEILS</a>
-            <a href="#associations" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors">AGIR</a>
+            <a href="#associations" className="font-receipt text-lg text-receipt-text hover:text-emerald-600 transition-colors" onClick={handleDownload}>AGIR</a>
           </div>
           
           {/* Mobile Menu Button */}
