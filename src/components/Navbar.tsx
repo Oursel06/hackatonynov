@@ -39,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => 
         </div>
         
         <div className="hidden md:block">
-          <a 
+          <a onClick={handleDownload}
             href="#associations"
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-colors"
           >
