@@ -1,52 +1,6 @@
 import React, { useState } from 'react';
 import { DollarSign, Trash2, Wind, Apple, X } from 'lucide-react';
 
-const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-[9999] bg-black"
-      style={{
-        touchAction: 'none',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh'
-      }}
-    >
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[10000]"
-        style={{ position: 'fixed' }}
-      >
-        <X size={32} />
-      </button>
-      <div className="fixed inset-0 flex items-center justify-center">
-        <video
-          className="max-w-[100vw] max-h-[100vh] w-auto h-auto"
-          controls
-          autoPlay
-          src="/HACKATHON_VIDEO.mp4"
-          onEnded={onClose}
-        />
-      </div>
-    </div>
-  );
-};
-
 const StatItem: React.FC<{
   label: string;
   value: string;
@@ -115,12 +69,15 @@ const Stats: React.FC = () => {
 
         <div className="mt-12 bg-receipt-text/5 p-6 rounded-lg border-2 border-dashed border-receipt-border">
           <div className="font-receipt text-receipt-text text-center">
-            <button
-              onClick={() => setIsVideoOpen(true)}
+            <a
+              href="/HACKATHON_VIDEO.mp4"
               className="text-2xl bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-8 py-3 rounded-lg transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               FACTURE VISUELLE
-            </button>
+            </a>
+
           </div>
         </div>
 
@@ -131,8 +88,6 @@ const Stats: React.FC = () => {
           <p>--------------------------------</p>
         </div>
       </div>
-
-      <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
     </section>
   );
 };
