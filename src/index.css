@@ -15,6 +15,44 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
+/** Hero section **/
+
+
+.container {
+  position: relative;
+  width: 600px;
+  height: 300px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+.image-after {
+  clip-path: inset(0 100% 0 0); /* image "après" visible à 100% au départ */
+  transition: clip-path 0.5s ease;
+}
+
+.image-after.no-transition {
+  transition: none !important;
+}
+
+
+
+
+
+
 /* Scrollbar customization */
 ::-webkit-scrollbar {
   width: 8px;
