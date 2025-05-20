@@ -28,21 +28,55 @@ export default {
           800: '#92400E',
           900: '#78350F',
         },
+        receipt: {
+          paper: '#FAF7F0',
+          text: '#1A1A1A',
+          border: '#2A2A2A',
+        }
       },
       fontFamily: {
         sans: ['Open Sans', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif'],
+        receipt: ['VT323', 'monospace'],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            '--tw-prose-headings': 'var(--tw-prose-receipt)',
+            '--tw-prose-body': 'var(--tw-prose-receipt)',
+            'font-family': 'var(--font-receipt)',
+          },
+        },
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-in-out',
+        'receipt-print': 'receipt-print 1.5s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        'receipt-print': {
+          '0%': { 
+            transform: 'translateY(-100%)',
+            opacity: '0'
+          },
+          '100%': { 
+            transform: 'translateY(0)',
+            opacity: '1'
+          },
+        }
+      },
+      backgroundImage: {
+        'receipt-dots': 'radial-gradient(#2A2A2A 1px, transparent 0)',
+      },
+      backgroundSize: {
+        'dots-sm': '8px 8px',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

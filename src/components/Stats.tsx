@@ -1,118 +1,85 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { DollarSign, Trash2, Wind, Apple } from 'lucide-react';
 
-interface StatItemProps {
-  value: string;
+const StatItem: React.FC<{
   label: string;
-  delay?: number;
-}
-
-const StatItem: React.FC<StatItemProps> = ({ value, label, delay = 0 }) => {
-  const statRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-            entry.target.classList.remove('opacity-0', 'translate-y-8');
-          }, delay);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
-    );
-    
-    if (statRef.current) {
-      observer.observe(statRef.current);
-    }
-    
-    return () => {
-      if (statRef.current) {
-        observer.unobserve(statRef.current);
-      }
-    };
-  }, [delay]);
-  
+  value: string;
+  sublabel?: string;
+  icon: React.ReactNode;
+}> = ({ label, value, sublabel, icon }) => {
   return (
-    <div 
-      ref={statRef} 
-      className="bg-white rounded-lg p-6 shadow-md flex flex-col items-center transform opacity-0 translate-y-8 transition-all duration-700 ease-out"
-    >
-      <span className="text-4xl md:text-5xl font-bold text-emerald-600 mb-2">{value}</span>
-      <span className="text-gray-600 text-center">{label}</span>
+    <div className="font-receipt text-receipt-text space-y-2">
+      <div className="flex items-center justify-between border-b border-dashed border-receipt-border pb-2">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 flex items-center justify-center">
+            {icon}
+          </div>
+          <span>{label}</span>
+        </div>
+        <span className="text-xl">{value}</span>
+      </div>
+      {sublabel && (
+        <p className="text-sm text-right pr-2">{sublabel}</p>
+      )}
     </div>
   );
 };
 
 const Stats: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100');
-          entry.target.classList.remove('opacity-0');
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-  
   return (
-    <section 
-      id="statistiques" 
-      className="py-20 bg-gradient-to-b from-amber-50 to-white"
-    >
-      <div 
-        ref={sectionRef}
-        className="container mx-auto px-4 opacity-0 transition-opacity duration-1000"
-      >
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-emerald-800 mb-4">L'Ampleur du Problème</h2>
-          <p className="text-lg text-gray-600">
-            Le gaspillage alimentaire a des conséquences considérables sur notre planète, notre économie et notre société. Découvrez quelques chiffres alarmants qui illustrent l'urgence d'agir.
-          </p>
+    <section id="statistiques" className="py-16 bg-receipt-paper">
+      <div className="container mx-auto px-4 max-w-3xl">
+        <div className="text-center font-receipt text-receipt-text mb-12">
+          <p>================================</p>
+          <h2 className="text-3xl my-4">FACTURE DU GASPILLAGE</h2>
+          <p>================================</p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatItem 
-            value="1,3 G" 
-            label="de tonnes de nourriture gaspillées chaque année dans le monde" 
-            delay={0}
+
+        <div className="space-y-8">
+          <StatItem
+            icon={<Trash2 />}
+            label="NOURRITURE GASPILLÉE"
+            value="1,3 G"
+            sublabel="(tonnes par an dans le monde)"
           />
-          <StatItem 
-            value="33%" 
-            label="de la nourriture produite n'est jamais consommée" 
-            delay={200}
+
+          <StatItem
+            icon={<DollarSign />}
+            label="COÛT FINANCIER"
+            value="20 Mrd€"
+            sublabel="(pertes annuelles en France)"
           />
-          <StatItem 
-            value="3,3 G" 
-            label="de tonnes de CO2 émises par le gaspillage alimentaire" 
-            delay={400}
+
+          <StatItem
+            icon={<Wind />}
+            label="ÉMISSIONS CO2"
+            value="3,3 G"
+            sublabel="(tonnes de CO2 par an)"
           />
-          <StatItem 
-            value="20 kg" 
-            label="de nourriture gaspillée par personne et par an en France" 
-            delay={600}
+
+          <StatItem
+            icon={<Apple />}
+            label="GASPILLAGE/PERS"
+            value="20 kg"
+            sublabel="(par an en France)"
           />
         </div>
-        
-        <div className="mt-16 bg-amber-100 p-6 md:p-8 rounded-lg max-w-3xl mx-auto">
-          <h3 className="text-xl font-semibold text-amber-800 mb-3">Le saviez-vous?</h3>
-          <p className="text-amber-900">
-            Si le gaspillage alimentaire était un pays, il serait le 3ème plus grand émetteur de gaz à effet de serre après la Chine et les États-Unis. Réduire le gaspillage alimentaire est l'une des actions les plus efficaces pour lutter contre le changement climatique.
-          </p>
+
+        <div className="mt-12 bg-receipt-text/5 p-6 rounded-lg border-2 border-dashed border-receipt-border">
+          <div className="font-receipt text-receipt-text">
+            <p className="text-lg mb-4">NOTE IMPORTANTE:</p>
+            <p className="text-receipt-text/80">
+              Si le gaspillage alimentaire était un pays, il serait le 3ème plus grand émetteur de gaz à effet de serre après la Chine et les États-Unis.
+            </p>
+            <p className="mt-4 text-center">*********************</p>
+          </div>
+        </div>
+
+        {/* Bordures pointillées */}
+        <div className="mt-8 font-receipt text-receipt-text text-center">
+          <p>--------------------------------</p>
+          <p className="text-sm my-2">FIN DU DÉTAIL</p>
+          <p>--------------------------------</p>
         </div>
       </div>
     </section>
