@@ -133,7 +133,7 @@ const Categories: React.FC = () => {
 		setCurrentIndex((prevIndex) => (prevIndex + newDirection + categories.length) % categories.length);
 	};
 
-	const handleDragEnd = (_: any, { offset, velocity }: { offset: { x: number }, velocity: { x: number } }) => {
+	const handleDragEnd = (_: unknown, { offset, velocity }: { offset: { x: number }, velocity: { x: number } }) => {
 		const swipe = Math.abs(offset.x) * velocity.x;
 		if (swipe < -5000) {
 			paginate(1);

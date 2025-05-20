@@ -1,11 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+
+// Déclaration du type pour webkitAudioContext
+interface Window {
+  webkitAudioContext: typeof AudioContext;
+}
 
 const PrintSound: React.FC = () => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
   useEffect(() => {
     // Création d'un buffer AudioContext pour générer le son d'impression
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
