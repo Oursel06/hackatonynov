@@ -6,6 +6,22 @@ interface NavbarProps {
   toggleMobileMenu: () => void;
 }
 
+// Fonction pour télécharger le PDF
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = "/doc/gaspillage_alimentaire.pdf";
+  link.download = "guide_gaspillage_alimentaire.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // Smooth scroll vers "associations" après le téléchargement
+  setTimeout(() => {
+    const section = document.getElementById("associations");
+    section?.scrollIntoView({ behavior: "smooth" });
+  }, 200);
+};
+
 const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
@@ -24,7 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => 
         </div>
         
         <div className="hidden md:block">
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
+          <button
+          onClick={handleDownload}
+          className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-colors">
             Agir Maintenant
           </button>
         </div>
@@ -54,7 +72,9 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => 
             <a href="#quiz" className="text-emerald-800 text-lg font-medium" onClick={toggleMobileMenu}>Quiz</a>
             <a href="#conseils" className="text-emerald-800 text-lg font-medium" onClick={toggleMobileMenu}>Conseils</a>
             
-            <button className="mt-8 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-colors w-full max-w-xs">
+            <button
+            onClick={handleDownload}
+            className="mt-8 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-colors w-full max-w-xs">
               Agir Maintenant
             </button>
           </div>
