@@ -19,7 +19,7 @@ const StatItem: React.FC<{
         <span className="text-xl">{value}</span>
       </div>
       {sublabel && (
-        <p className="text-lg text-right pr-2">{sublabel}</p>
+        <p className="text-xl text-right pr-2">{sublabel}</p>
       )}
     </div>
   );

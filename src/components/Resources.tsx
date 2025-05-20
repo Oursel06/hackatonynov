@@ -101,7 +101,7 @@ const Resources: React.FC = () => {
       >
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Ressources & Partenaires</h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-xl text-gray-600">
             Découvrez des organisations et des initiatives qui luttent activement contre le gaspillage alimentaire et qui proposent des solutions concrètes.
           </p>
         </div>

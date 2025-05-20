@@ -26,7 +26,7 @@ const PrintingOverlay: React.FC = () => {
     <div className="fixed inset-0 bg-gray-900/90 backdrop-blur-sm z-50 flex items-center justify-center">
       <div className="bg-receipt-paper p-6 rounded-lg shadow-xl receipt-texture">
         <Printer className="w-8 h-8 mx-auto mb-4 text-receipt-text animate-pulse" />
-        <p className="font-receipt text-lg text-receipt-text">
+        <p className="font-receipt text-xl text-receipt-text">
           Impression en cours{dots}
         </p>
       </div>

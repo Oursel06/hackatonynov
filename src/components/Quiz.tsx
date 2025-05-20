@@ -284,7 +284,7 @@ const Quiz: React.FC = () => {
               <h3 className="text-2xl font-receipt text-receipt-text mb-4">FÉLICITATIONS!</h3>
               <div className="font-receipt text-receipt-text space-y-4">
                 <p>--------------------------------</p>
-                <p className="text-lg">VOTRE SCORE: {score}/{questions.length}</p>
+                <p className="text-xl">VOTRE SCORE: {score}/{questions.length}</p>
                 <p>--------------------------------</p>
                 <p className="text-receipt-text/80">{getScoreMessage()}</p>
               </div>

@@ -45,18 +45,18 @@ const Footer: React.FC = () => {
               TICKET ÉCOLOGIQUE - NON JETABLE
               <Receipt size={16} />
             </p>
-            <p className="font-receipt text-lg text-receipt-text">
+            <p className="font-receipt text-xl text-receipt-text">
               {new Date().toLocaleString('fr-FR')}
             </p>
-            <p className="font-receipt text-lg text-receipt-text mb-2">
+            <p className="font-receipt text-xl text-receipt-text mb-2">
               Par Yanis, Alexandre, Fleming et Hugo
             </p>
-            <p className="text-lg font-receipt text-receipt-text flex items-center justify-center">
+            <p className="text-xl font-receipt text-receipt-text flex items-center justify-center">
               Fait avec <Heart className="mx-1 text-red-500" size={14} /> pour notre planète
             </p>
           </div>
 
-          <div className="text-center mt-4 font-receipt text-receipt-text text-lg">
+          <div className="text-center mt-4 font-receipt text-receipt-text text-xl">
             <p>*** CONSERVEZ CE TICKET ***</p>
             <p>IL REPRÉSENTE VOTRE ENGAGEMENT</p>
             <p>POUR UN MONDE MEILLEUR</p>
