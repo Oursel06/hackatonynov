@@ -66,13 +66,13 @@ const Hero: React.FC = () => {
             className="relative w-full h-full overflow-hidden"
         >
           <img
-              src="https://picsum.photos/id/1015/1920/1080"
+              src="/apres.webp"
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               alt="Avant"
           />
           <img
               ref={imageAfterRef}
-              src="https://picsum.photos/id/1022/1920/1080"
+              src="/avant.webp"
               className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-[clip-path] duration-500 ease"
               style={{ clipPath: 'inset(0 100% 0 0)' }}
               alt="Après"
