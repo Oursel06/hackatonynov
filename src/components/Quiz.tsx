@@ -206,7 +206,7 @@ const Quiz: React.FC = () => {
         <div className="text-center font-receipt text-receipt-text mb-12">
           <Star className="w-8 h-8 mx-auto mb-4" />
           <p>================================</p>
-          <h2 className="text-3xl my-4">TICKET GAGNANT</h2>
+          <h2 className="text-3xl my-4">TICKET PERDANT</h2>
           <p className="text-xl">TESTEZ VOS CONNAISSANCES</p>
           <p>================================</p>
         </div>
