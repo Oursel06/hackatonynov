@@ -206,8 +206,8 @@ const Quiz: React.FC = () => {
         <div className="text-center font-receipt text-receipt-text mb-12">
           <Star className="w-8 h-8 mx-auto mb-4" />
           <p>================================</p>
-          <h2 className="text-3xl my-4">TICKET GAGNANT</h2>
-          <p>TESTEZ VOS CONNAISSANCES</p>
+          <h2 className="text-3xl my-4">TICKET PERDANT</h2>
+          <p className="text-xl">TESTEZ VOS CONNAISSANCES</p>
           <p>================================</p>
         </div>
 
@@ -220,14 +220,14 @@ const Quiz: React.FC = () => {
               className="bg-receipt-paper border-2 border-dashed border-receipt-border p-8 rounded-lg"
             >
               <div className="mb-8">
-                <div className="flex justify-between items-center mb-4 font-receipt text-receipt-text">
+                <div className="text-2xl flex justify-between items-center mb-4 font-receipt text-receipt-text">
                   <span>QUESTION {currentQuestion + 1}/{questions.length}</span>
                   <span>SCORE: {score}/{questions.length}</span>
                 </div>
-                <h3 className="text-xl font-receipt text-receipt-text mb-6">
+                <h3 className="text-2xl font-receipt text-receipt-text mb-6">
                   {questions[currentQuestion].question}
                 </h3>
-                <div className="space-y-4">
+                <div className="text-2xl space-y-4">
                   {questions[currentQuestion].options.map((option, index) => (
                     <button
                       key={index}
@@ -257,7 +257,7 @@ const Quiz: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="mb-8 p-4 bg-receipt-text/5 rounded-lg border-2 border-dashed border-receipt-border"
                 >
-                  <p className="font-receipt text-receipt-text">
+                  <p className="text-2xl font-receipt text-receipt-text">
                     {questions[currentQuestion].explanation}
                   </p>
                 </motion.div>
@@ -284,7 +284,7 @@ const Quiz: React.FC = () => {
               <h3 className="text-2xl font-receipt text-receipt-text mb-4">FÉLICITATIONS!</h3>
               <div className="font-receipt text-receipt-text space-y-4">
                 <p>--------------------------------</p>
-                <p className="text-lg">VOTRE SCORE: {score}/{questions.length}</p>
+                <p className="text-xl">VOTRE SCORE: {score}/{questions.length}</p>
                 <p>--------------------------------</p>
                 <p className="text-receipt-text/80">{getScoreMessage()}</p>
               </div>

@@ -24,7 +24,7 @@ const categories = [
         image: 'https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg',
         icon: Users,
         color: 'emerald',
-        learnMoreUrl: 'https://www.ademe.fr/expertises/dechets/elements-contexte/gaspillage-alimentaire',
+		learnMoreUrl: 'https://agriculture.gouv.fr/gaspillage-alimentaire-des-nouvelles-donnees-pour-la-france',
     },
     {
         id: 2,
@@ -44,7 +44,7 @@ const categories = [
         image: 'https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg',
         icon: Bird,
         color: 'amber',
-        learnMoreUrl: 'https://www.wwf.fr/agir-au-quotidien/reduire-le-gaspillage-alimentaire',
+		learnMoreUrl: 'https://librairie.ademe.fr/economie-circulaire-et-dechets/7619-le-gaspillage-alimentaire-dans-la-restauration-collective.html ',
     },
     {
         id: 3,
@@ -150,7 +150,7 @@ const Categories: React.FC = () => {
 					<BarChart className="w-8 h-8 mx-auto mb-4" />
 					<p>================================</p>
 					<h2 className="text-3xl my-4">RAPPORT D'IMPACT</h2>
-					<p>CONSÉQUENCES DU GASPILLAGE</p>
+					<p className="text-xl">CONSÉQUENCES DU GASPILLAGE</p>
 					<p>================================</p>
 					{/* Code-barres décoratif */}
 					<div className="mt-4 flex justify-center gap-1">
@@ -208,7 +208,7 @@ const Categories: React.FC = () => {
 										********************************
 									</p>
 
-									<div className="prose prose-lg max-w-none prose-receipt">
+									<div className="text-xl prose prose-lg max-w-none prose-receipt">
 										<ReactMarkdown>{categories[currentIndex].description}</ReactMarkdown>
 									</div>
 

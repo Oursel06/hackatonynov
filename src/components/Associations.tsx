@@ -102,7 +102,7 @@ const Associations: React.FC = () => {
 					<Store className="w-8 h-8 mx-auto mb-4" />
 					<p>================================</p>
 					<h2 className="text-3xl my-4">RÉPERTOIRE PARTENAIRES</h2>
-					<p>AGIR ENSEMBLE CONTRE LE GASPILLAGE</p>
+					<p className="text-xl my-4">AGIR ENSEMBLE CONTRE LE GASPILLAGE</p>
 					<p>================================</p>
 				</div>
 
@@ -133,9 +133,9 @@ const Associations: React.FC = () => {
 									<p>--------------------------------</p>
 								</div>
 
-								<p className="text-center">{associations[currentIndex].description}</p>
+								<p className="text-2xl text-center px-4">{associations[currentIndex].description}</p>
 
-								<div className="space-y-3">
+								<div className="text-2xl space-y-3">
 									<div className="flex items-center gap-2">
 										<Building2 className="w-4 h-4" />
 										<p>{associations[currentIndex].address}</p>
@@ -152,7 +152,7 @@ const Associations: React.FC = () => {
 
 								<div className="text-center">
 									<p>--------------------------------</p>
-									<p className="mt-2">
+									<p className="text-2xl mt-2">
 										{associations[currentIndex].type === 'association'
 											? 'ASSOCIATION'
 											: associations[currentIndex].type === 'platform'
@@ -164,7 +164,7 @@ const Associations: React.FC = () => {
 										href={associations[currentIndex].website}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-6 py-2 rounded-lg transition-colors"
+										className="text-2xl bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-6 py-2 rounded-lg transition-colors"
 									>
 										{associations[currentIndex].website.replace('https://', '')}
 									</a>

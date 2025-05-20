@@ -1,5 +1,5 @@
-import React from 'react';
-import { DollarSign, Trash2, Wind, Apple } from 'lucide-react';
+import React, { useState } from 'react';
+import { DollarSign, Trash2, Wind, Apple, X } from 'lucide-react';
 
 const StatItem: React.FC<{
   label: string;
@@ -19,13 +19,15 @@ const StatItem: React.FC<{
         <span className="text-xl">{value}</span>
       </div>
       {sublabel && (
-        <p className="text-sm text-right pr-2">{sublabel}</p>
+        <p className="text-xl text-right pr-2">{sublabel}</p>
       )}
     </div>
   );
 };
 
 const Stats: React.FC = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <section id="statistiques" className="py-16 bg-receipt-paper">
       <div className="container mx-auto px-4 max-w-3xl">
@@ -35,7 +37,7 @@ const Stats: React.FC = () => {
           <p>================================</p>
         </div>
 
-        <div className="space-y-8">
+        <div className="text-xl space-y-8">
           <StatItem
             icon={<Trash2 />}
             label="NOURRITURE GASPILLÉE"
@@ -66,19 +68,23 @@ const Stats: React.FC = () => {
         </div>
 
         <div className="mt-12 bg-receipt-text/5 p-6 rounded-lg border-2 border-dashed border-receipt-border">
-          <div className="font-receipt text-receipt-text">
-            <p className="text-lg mb-4">NOTE IMPORTANTE:</p>
-            <p className="text-receipt-text/80">
-              Si le gaspillage alimentaire était un pays, il serait le 3ème plus grand émetteur de gaz à effet de serre après la Chine et les États-Unis.
-            </p>
-            <p className="mt-4 text-center">*********************</p>
+          <div className="font-receipt text-receipt-text text-center">
+            <a
+              href="/HACKATHON_VIDEO.mp4"
+              className="text-2xl bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-8 py-3 rounded-lg transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              FACTURE VISUELLE
+            </a>
+
           </div>
         </div>
 
         {/* Bordures pointillées */}
         <div className="mt-8 font-receipt text-receipt-text text-center">
           <p>--------------------------------</p>
-          <p className="text-sm my-2">FIN DU DÉTAIL</p>
+          <p className="text-xl my-2">FIN DU DÉTAIL</p>
           <p>--------------------------------</p>
         </div>
       </div>
