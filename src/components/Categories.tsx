@@ -143,7 +143,7 @@ const Categories: React.FC = () => {
 	};
 
 	return (
-		<section className="py-32 bg-emerald-100 rounded-lg shadow-lg overflow-x-hidden [perspective:1000px]">
+		<section id="impact" className="py-32 bg-emerald-100 overflow-x-hidden [perspective:1000px]">
 			<div className="container mx-auto px-4">
 				<motion.div
 					initial={{ opacity: 0, y: 50 }}
