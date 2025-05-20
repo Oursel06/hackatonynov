@@ -159,7 +159,7 @@ const Associations: React.FC = () => {
 											? 'PLATEFORME'
 											: 'ENTREPRISE SOCIALE'}
 									</p>
-									<br/>
+									<br></br>
 									<a
 										href={associations[currentIndex].website}
 										target="_blank"
