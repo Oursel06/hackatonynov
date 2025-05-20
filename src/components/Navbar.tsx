@@ -6,6 +6,15 @@ interface NavbarProps {
   toggleMobileMenu: () => void;
 }
 
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = "/doc/gaspillage_alimentaire.pdf";
+  link.download = "guide_gaspillage_alimentaire.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => {
   return (
     <header className="sticky top-0 z-50 bg-receipt-paper/95 backdrop-blur-sm border-y border-dashed border-receipt-border">

@@ -8,6 +8,16 @@ interface TipCardProps {
   couponCode: string;
 }
 
+// Fonction pour télécharger le PDF
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = "/doc/gaspillage_alimentaire.pdf";
+  link.download = "guide_gaspillage_alimentaire.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 const TipCard: React.FC<TipCardProps> = ({ icon, title, description, couponCode }) => {
   return (
     <div className="bg-receipt-paper border-2 border-dashed border-receipt-border p-6 relative">
@@ -86,7 +96,9 @@ const Tips: React.FC = () => {
         </div>
         
         <div className="mt-16 text-center font-receipt">
-          <button className="bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-8 py-3 rounded-lg transition-colors">
+          <button
+          onClick={handleDownload}
+          className="bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-8 py-3 rounded-lg transition-colors">
             TÉLÉCHARGER LE GUIDE COMPLET
           </button>
           <p className="mt-4 text-xs text-receipt-text/60">
