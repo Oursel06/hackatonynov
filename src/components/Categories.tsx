@@ -1,0 +1,264 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Users, Leaf, Bird } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+
+const categories = [
+    {
+        id: 1,
+        name: 'Humains',
+        description: `# Impact Humain Dévastateur
+
+* Gaspillage mondial :
+  * **40 tonnes** de nourriture gaspillée chaque seconde
+  * **1,3 milliard de tonnes** jetées annuellement
+  * Pourrait nourrir **4 fois** tous les affamés dans le monde
+
+* Conséquences tragiques :
+  * **9 millions** de décès dus à la faim chaque année
+  * En France seule :
+    * **10 millions de tonnes** gaspillées
+    * Coût estimé : **20 milliards d'euros**
+
+> Pendant que certains jettent, d'autres meurent de faim. Le gaspillage alimentaire est l'une des plus grandes injustices de notre temps.`,
+        image: 'https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg',
+        icon: Users,
+        color: 'emerald',
+        learnMoreUrl: 'https://www.ademe.fr/expertises/dechets/elements-contexte/gaspillage-alimentaire',
+    },
+    {
+        id: 2,
+        name: 'Faune',
+        description: `# Destruction de la Vie Sauvage
+
+* Impact environnemental :
+  * Pollution équivalente à **tous les véhicules du monde**
+  * Méthane des déchets alimentaires **25 fois plus nocif** que le CO₂
+
+* Conséquences sur la biodiversité :
+  * Destruction massive des habitats naturels
+  * Extinction accélérée des espèces animales
+  * Perturbation des écosystèmes
+
+> Chaque aliment gaspillé contribue à la disparition silencieuse de notre biodiversité.`,
+        image: 'https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg',
+        icon: Bird,
+        color: 'amber',
+        learnMoreUrl: 'https://www.wwf.fr/agir-au-quotidien/reduire-le-gaspillage-alimentaire',
+    },
+    {
+        id: 3,
+        name: 'Flore',
+        description: `# Catastrophe Environnementale
+
+* Impact sur les ressources :
+  * **30%** des terres agricoles exploitées inutilement
+  * Gaspillage de **250 km³ d'eau** par an
+    * Équivalent à 3 fois le volume du lac Léman
+  * Utilisation excessive de pesticides et fertilisants
+
+* Dégradation des écosystèmes :
+  * Déforestation massive injustifiée
+  * Érosion des sols
+  * Perte de biodiversité végétale
+
+> Chaque aliment jeté détruit un morceau de notre planète.`,
+        image: 'https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg',
+        icon: Leaf,
+        color: 'emerald',
+        learnMoreUrl: 'https://www.fao.org/platform-food-loss-waste/flw-data/fr/',
+    },
+];
+
+const Categories: React.FC = () => {
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [direction, setDirection] = useState(0);
+
+	const slideVariants = {
+		enter: (direction: number) => ({
+			x: direction > 0 ? 1500 : -1500,
+			opacity: 0,
+			scale: 0.95,
+			rotateY: direction > 0 ? 45 : -45,
+		}),
+		center: {
+			x: 0,
+			opacity: 1,
+			scale: 1,
+			rotateY: 0,
+			transition: {
+				type: 'spring',
+				stiffness: 300,
+				damping: 30,
+				opacity: { duration: 0.5 },
+				scale: { duration: 0.5 },
+				rotateY: { duration: 0.8, ease: 'easeOut' },
+			},
+		},
+		exit: (direction: number) => ({
+			x: direction < 0 ? 1500 : -1500,
+			opacity: 0,
+			scale: 0.95,
+			rotateY: direction < 0 ? 45 : -45,
+			transition: {
+				type: 'spring',
+				stiffness: 300,
+				damping: 30,
+				opacity: { duration: 0.5 },
+				scale: { duration: 0.5 },
+				rotateY: { duration: 0.8, ease: 'easeOut' },
+			},
+		}),
+	};
+
+	const buttonVariants = {
+		rest: { scale: 1 },
+		hover: { scale: 1.1 },
+		tap: { scale: 0.95 },
+	};
+
+	const indicatorVariants = {
+		selected: {
+			width: '3rem',
+			transition: { duration: 0.3, ease: 'easeInOut' },
+		},
+		notSelected: {
+			width: '0.75rem',
+			transition: { duration: 0.3, ease: 'easeInOut' },
+		},
+	};
+
+	const paginate = (newDirection: number) => {
+		setDirection(newDirection);
+		setCurrentIndex((prevIndex) => (prevIndex + newDirection + categories.length) % categories.length);
+	};
+
+	const handleDragEnd = (_: any, { offset, velocity }: { offset: { x: number }, velocity: { x: number } }) => {
+		const swipe = Math.abs(offset.x) * velocity.x;
+		if (swipe < -5000) {
+			paginate(1);
+		} else if (swipe > 5000) {
+			paginate(-1);
+		}
+	};
+
+	return (
+		<section className="py-32 bg-emerald-100 rounded-lg shadow-lg overflow-x-hidden [perspective:1000px]">
+			<div className="container mx-auto px-4">
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8, ease: 'easeOut' }}
+					className="max-w-4xl mx-auto text-center mb-20"
+				>
+					<h2 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-6">
+						Impact sur notre Monde
+					</h2>
+					<p className="text-xl text-emerald-100">
+						Le gaspillage alimentaire affecte profondément notre société, notre faune et notre flore.
+						Découvrez les conséquences sur chaque aspect de notre écosystème.
+					</p>
+				</motion.div>
+
+				<div className="relative max-w-6xl mx-auto">
+					<AnimatePresence initial={false} custom={direction} mode="wait">
+						<motion.div
+							key={currentIndex}
+							custom={direction}
+							variants={slideVariants}
+							initial="enter"
+							animate="center"
+							exit="exit"
+							drag="x"
+							dragConstraints={{ left: 0, right: 0 }}
+							dragElastic={0.7}
+							onDragEnd={handleDragEnd}
+							className="w-full [transform-style:preserve-3d]"
+						>
+							<div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+								<div
+									className="h-96 bg-cover bg-center relative"
+									style={{ backgroundImage: `url(${categories[currentIndex].image})` }}
+								>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+									<div className="absolute bottom-0 left-0 right-0 p-10">
+										<div className="flex items-center mb-4">
+											<div
+												className={`w-16 h-16 rounded-full bg-${categories[currentIndex].color}-100 flex items-center justify-center backdrop-blur-sm bg-white/30`}
+											>
+												{React.createElement(categories[currentIndex].icon, {
+													className: `w-8 h-8 text-${categories[currentIndex].color}-600`,
+												})}
+											</div>
+											<h3 className="ml-6 text-4xl font-bold text-white">
+												{categories[currentIndex].name}
+											</h3>
+										</div>
+									</div>
+								</div>
+								<div className="p-10">
+									<div className="prose prose-lg max-w-none prose-emerald">
+										<ReactMarkdown>{categories[currentIndex].description}</ReactMarkdown>
+									</div>
+									<div className="mt-8 flex justify-end">
+										<a
+											href={categories[currentIndex].learnMoreUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											className={`inline-flex items-center bg-${categories[currentIndex].color}-600 hover:bg-${categories[currentIndex].color}-700 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 group`}
+										>
+											En savoir plus
+											<ChevronRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+										</a>
+									</div>
+								</div>
+							</div>
+						</motion.div>
+					</AnimatePresence>
+
+					<motion.button
+						variants={buttonVariants}
+						initial="rest"
+						whileHover="hover"
+						whileTap="tap"
+						onClick={() => paginate(-1)}
+						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg text-emerald-600 hover:text-emerald-700 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+					>
+						<ChevronLeft className="w-8 h-8" />
+					</motion.button>
+
+					<motion.button
+						variants={buttonVariants}
+						initial="rest"
+						whileHover="hover"
+						whileTap="tap"
+						onClick={() => paginate(1)}
+						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg text-emerald-600 hover:text-emerald-700 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+					>
+						<ChevronRight className="w-8 h-8" />
+					</motion.button>
+				</div>
+
+				<div className="flex justify-center mt-12 gap-2">
+					{categories.map((_, index) => (
+						<motion.button
+							key={index}
+							variants={indicatorVariants}
+							animate={index === currentIndex ? 'selected' : 'notSelected'}
+							onClick={() => {
+								setDirection(index > currentIndex ? 1 : -1);
+								setCurrentIndex(index);
+							}}
+							className={`h-3 rounded-full transition-all duration-300 ${
+								index === currentIndex ? 'bg-emerald-600' : 'bg-emerald-200 hover:bg-emerald-100'
+							}`}
+							aria-label={`Aller à la section ${categories[index].name}`}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+	);
+};
+
+export default Categories;

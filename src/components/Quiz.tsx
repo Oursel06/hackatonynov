@@ -13,51 +13,147 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "Quelle quantité de nourriture est gaspillée chaque année dans le monde ?",
+    question: "Combien de personnes pourrait-on nourrir avec la nourriture gaspillée chaque année dans le monde ?",
     options: [
-      "500 millions de tonnes",
-      "1,3 milliard de tonnes",
-      "2 milliards de tonnes",
-      "3 milliards de tonnes"
+      "100 millions",
+      "500 millions",
+      "1 milliard",
+      "3 milliards"
     ],
-    correctAnswer: 1,
-    explanation: "Environ 1,3 milliard de tonnes de nourriture sont gaspillées chaque année dans le monde, soit un tiers de la production alimentaire mondiale."
+    correctAnswer: 3,
+    explanation: "La quantité de nourriture gaspillée dans le monde chaque année pourrait nourrir 3 milliards de personnes, soit presque 4 fois le nombre de personnes souffrant de sous-alimentation."
   },
   {
     id: 2,
-    question: "Quel est le pourcentage de nourriture gaspillée par les ménages français ?",
+    question: "Quel est le principal gaz à effet de serre émis par les aliments jetés en décharge ?",
     options: [
-      "10%",
-      "20%",
-      "30%",
-      "40%"
+      "Dioxyde de carbone (CO₂)",
+      "Méthane (CH₄)",
+      "Protoxyde d’azote (N₂O)",
+      "Ozone (O₃)"
     ],
-    correctAnswer: 2,
-    explanation: "En France, environ 30% de la nourriture achetée par les ménages finit à la poubelle."
+    correctAnswer: 1,
+    explanation: "Les aliments pourrissant en décharge produisent principalement du méthane (CH₄), un gaz à effet de serre 25 fois plus puissant que le CO₂."
   },
   {
     id: 3,
-    question: "Quelle est la meilleure façon de conserver les fruits et légumes ?",
+    question: "Quelle part des terres agricoles mondiales est utilisée pour produire des aliments qui ne seront jamais consommés ?",
     options: [
-      "Dans des sacs plastiques hermétiques",
-      "Dans le bac à légumes du réfrigérateur",
-      "À température ambiante",
-      "Cela dépend du type de fruit ou légume"
+      "5%",
+      "15%",
+      "20%",
+      "30%"
     ],
     correctAnswer: 3,
-    explanation: "La méthode de conservation optimale varie selon le type de fruit ou légume. Certains se conservent mieux au réfrigérateur, d'autres à température ambiante."
+    explanation: "Environ 30% des terres agricoles mondiales servent à produire de la nourriture qui ne sera jamais consommée, car gaspillée à différentes étapes de la chaîne."
   },
   {
     id: 4,
-    question: "Quelle est la différence entre 'à consommer jusqu'au' et 'à consommer de préférence avant' ?",
+    question: "Quelle quantité d’eau est gaspillée chaque année à cause du gaspillage alimentaire ?",
     options: [
-      "Il n'y a pas de différence",
-      "Le premier est une date limite sanitaire, le second une date de qualité optimale",
-      "Le premier concerne les produits frais, le second les conserves",
-      "Le premier est plus strict que le second"
+      "10 km³",
+      "50 km³",
+      "100 km³",
+      "250 km³"
+    ],
+    correctAnswer: 3,
+    explanation: "Environ 250 km³ d’eau sont gaspillés chaque année pour produire des aliments jetés, soit trois fois le volume du lac Léman."
+  },
+  {
+    id: 5,
+    question: "En France, quel est le poids moyen de nourriture gaspillée par personne chaque année ?",
+    options: [
+      "15 kg",
+      "50 kg",
+      "85 kg",
+      "150 kg"
+    ],
+    correctAnswer: 3,
+    explanation: "Chaque Français jette en moyenne 150 kg de nourriture par an, dont 30 kg pourraient être évités."
+  },
+  {
+    id: 6,
+    question: "Quel est l’impact du gaspillage alimentaire sur la biodiversité ?",
+    options: [
+      "Aucun impact",
+      "Il favorise la biodiversité",
+      "Il contribue à la perte de biodiversité",
+      "Il rend les sols plus fertiles"
+    ],
+    correctAnswer: 2,
+    explanation: "Le gaspillage alimentaire contribue à la perte de biodiversité en détruisant les habitats naturels et en surconsommant les ressources naturelles."
+  },
+  {
+    id: 7,
+    question: "Quel pourcentage des émissions mondiales de gaz à effet de serre est lié au gaspillage alimentaire ?",
+    options: [
+      "1-2%",
+      "4-5%",
+      "8-10%",
+      "15-20%"
+    ],
+    correctAnswer: 2,
+    explanation: "Le gaspillage alimentaire est responsable de 8 à 10% des émissions mondiales de gaz à effet de serre."
+  },
+  {
+    id: 8,
+    question: "Laquelle de ces actions réduit le plus efficacement le gaspillage alimentaire à la maison ?",
+    options: [
+      "Jeter systématiquement les aliments à la date de péremption",
+      "Planifier ses repas et ses courses",
+      "Acheter en gros pour profiter des promos",
+      "Ne rien conserver au réfrigérateur"
     ],
     correctAnswer: 1,
-    explanation: "'À consommer jusqu'au' est une date limite sanitaire à ne pas dépasser, tandis que 'à consommer de préférence avant' indique simplement la date jusqu'à laquelle le produit conserve ses qualités optimales."
+    explanation: "Planifier ses repas et ses courses permet de mieux gérer ses achats, d’utiliser tout ce qu’on a chez soi, et donc de réduire le gaspillage alimentaire."
+  },
+  {
+    id: 9,
+    question: "Quelle est une méthode efficace pour utiliser les restes alimentaires à la maison ?",
+    options: [
+      "Les jeter immédiatement après le repas",
+      "Les utiliser pour composer de nouveaux plats comme des soupes ou des gratins",
+      "Les stocker indéfiniment au réfrigérateur",
+      "Les donner aux animaux domestiques sans vérification"
+    ],
+    correctAnswer: 1,
+    explanation: "Réutiliser les restes pour préparer de nouveaux plats (soupes, salades, gratins, quiches…) est l’une des meilleures façons de limiter le gaspillage alimentaire à la maison."
+  },
+  {
+    id: 10,
+    question: "Quel geste simple permet d’éviter d’acheter trop de nourriture ?",
+    options: [
+      "Faire ses courses sans liste",
+      "Aller faire ses courses en ayant faim",
+      "Établir une liste de courses basée sur ses menus de la semaine",
+      "Acheter en grandes quantités pour avoir du stock"
+    ],
+    correctAnswer: 2,
+    explanation: "Faire une liste de courses basée sur ses menus prévus permet de n’acheter que ce dont on a besoin et d’éviter les achats impulsifs qui finissent souvent gaspillés."
+  },
+  {
+    id: 11,
+    question: "Que faire en priorité avec les produits proches de leur date limite de consommation ?",
+    options: [
+      "Les mettre en avant dans le frigo pour les consommer en premier",
+      "Les cacher au fond du frigo",
+      "Les jeter systématiquement",
+      "Les congeler tout de suite"
+    ],
+    correctAnswer: 0,
+    explanation: "Mettre les produits à consommer rapidement devant dans le frigo aide à ne pas les oublier et à les consommer avant qu’ils ne soient périmés."
+  },
+  {
+    id: 12,
+    question: "Que signifie la mention 'à consommer de préférence avant' sur un produit alimentaire ?",
+    options: [
+      "Il ne faut jamais consommer le produit après cette date",
+      "Le produit est dangereux après cette date",
+      "Après cette date, le produit peut perdre en goût ou en texture mais reste généralement consommable",
+      "C'est une date purement indicative sans aucun impact"
+    ],
+    correctAnswer: 2,
+    explanation: "La mention 'à consommer de préférence avant' (DLUO ou DDM) indique la date de durabilité minimale. Après cette date, le produit peut perdre en qualité mais il reste souvent consommable sans danger."
   }
 ];
 
@@ -105,8 +201,8 @@ const Quiz: React.FC = () => {
   };
 
   return (
-    <section id="quiz" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="quiz" className="py-20 bg-emerald-100 rounded-lg shadow-lg">
+      <div className="container mx-auto px-4 ">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Testez Vos Connaissances</h2>
           <p className="text-lg text-gray-600">
