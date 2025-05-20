@@ -35,25 +35,8 @@ const Hero: React.FC = () => {
               <p>1.3 MILLIARD DE TONNES GASPILLÉES</p>
               <p>VALEUR: 20 MILLIARDS EUR</p>
               <p>--------------------------------</p>
-            </div>
-
-            {/* Call to action */}
-            <div className="pt-8 flex flex-col items-center gap-4">
-              <button className="bg-receipt-text text-receipt-paper hover:bg-receipt-text/80 px-8 py-3 rounded-full font-receipt text-lg transition-colors">
-                AGIR MAINTENANT
-              </button>
-              <button className="border-2 border-receipt-text text-receipt-text hover:bg-receipt-text/10 px-8 py-3 rounded-full font-receipt text-lg transition-colors">
-                EN SAVOIR PLUS
-              </button>
-            </div>
+            </div>          
           </div>
-        </div>
-
-        {/* Flèche de défilement */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#statistiques" className="text-receipt-text/80 hover:text-receipt-text transition-colors">
-            <ArrowDown className="w-8 h-8" />
-          </a>
         </div>
 
         {/* Pointillés latéraux */}
