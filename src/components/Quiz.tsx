@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Award, RefreshCw } from 'lucide-react';
+import { Award, RefreshCw, Star } from 'lucide-react';
 
 interface Question {
   id: number;
@@ -201,13 +201,14 @@ const Quiz: React.FC = () => {
   };
 
   return (
-    <section id="quiz" className="py-20 bg-emerald-100 rounded-lg shadow-lg">
-      <div className="container mx-auto px-4 ">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Testez Vos Connaissances</h2>
-          <p className="text-lg text-gray-600">
-            Découvrez ce que vous savez sur le gaspillage alimentaire et apprenez-en davantage à travers ce quiz interactif.
-          </p>
+    <section id="quiz" className="py-16 bg-receipt-paper">
+      <div className="container mx-auto px-4">
+        <div className="text-center font-receipt text-receipt-text mb-12">
+          <Star className="w-8 h-8 mx-auto mb-4" />
+          <p>================================</p>
+          <h2 className="text-3xl my-4">TICKET GAGNANT</h2>
+          <p>TESTEZ VOS CONNAISSANCES</p>
+          <p>================================</p>
         </div>
 
         <div className="max-w-2xl mx-auto">
@@ -216,30 +217,32 @@ const Quiz: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-lg p-8"
+              className="bg-receipt-paper border-2 border-dashed border-receipt-border p-8 rounded-lg"
             >
               <div className="mb-8">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-sm text-gray-500">Question {currentQuestion + 1}/{questions.length}</span>
-                  <span className="text-sm text-emerald-600">Score: {score}/{questions.length}</span>
+                <div className="flex justify-between items-center mb-4 font-receipt text-receipt-text">
+                  <span>QUESTION {currentQuestion + 1}/{questions.length}</span>
+                  <span>SCORE: {score}/{questions.length}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-6">{questions[currentQuestion].question}</h3>
+                <h3 className="text-xl font-receipt text-receipt-text mb-6">
+                  {questions[currentQuestion].question}
+                </h3>
                 <div className="space-y-4">
                   {questions[currentQuestion].options.map((option, index) => (
                     <button
                       key={index}
                       onClick={() => handleAnswerSelect(index)}
                       disabled={selectedAnswer !== null}
-                      className={`w-full text-left p-4 rounded-lg transition-all duration-300 ${
+                      className={`w-full text-left p-4 rounded-lg font-receipt transition-all duration-300 border-2 border-dashed ${
                         selectedAnswer === null
-                          ? 'hover:bg-emerald-50 border border-gray-200'
+                          ? 'hover:bg-receipt-text/5 border-receipt-border'
                           : selectedAnswer === index
                           ? index === questions[currentQuestion].correctAnswer
-                            ? 'bg-emerald-100 border border-emerald-500'
-                            : 'bg-red-100 border border-red-500'
+                            ? 'bg-emerald-100 border-emerald-500'
+                            : 'bg-red-100 border-red-500'
                           : index === questions[currentQuestion].correctAnswer
-                          ? 'bg-emerald-100 border border-emerald-500'
-                          : 'bg-gray-50 border border-gray-200'
+                          ? 'bg-emerald-100 border-emerald-500'
+                          : 'bg-receipt-paper/50 border-receipt-border'
                       }`}
                     >
                       {option}
@@ -252,9 +255,11 @@ const Quiz: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-8 p-4 bg-blue-50 rounded-lg"
+                  className="mb-8 p-4 bg-receipt-text/5 rounded-lg border-2 border-dashed border-receipt-border"
                 >
-                  <p className="text-blue-800">{questions[currentQuestion].explanation}</p>
+                  <p className="font-receipt text-receipt-text">
+                    {questions[currentQuestion].explanation}
+                  </p>
                 </motion.div>
               )}
 
@@ -263,9 +268,9 @@ const Quiz: React.FC = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   onClick={handleNextQuestion}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-medium transition-colors"
+                  className="w-full bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 py-3 rounded-lg font-receipt transition-colors"
                 >
-                  {currentQuestion < questions.length - 1 ? 'Question suivante' : 'Voir les résultats'}
+                  {currentQuestion < questions.length - 1 ? 'QUESTION SUIVANTE' : 'VOIR LES RÉSULTATS'}
                 </motion.button>
               )}
             </motion.div>
@@ -273,20 +278,22 @@ const Quiz: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white rounded-lg shadow-lg p-8 text-center"
+              className="bg-receipt-paper border-2 border-dashed border-receipt-border p-8 rounded-lg text-center"
             >
-              <Award className="w-16 h-16 text-emerald-600 mx-auto mb-6" />
-              <h3 className="text-2xl font-bold text-emerald-800 mb-4">Quiz Terminé !</h3>
-              <p className="text-lg text-gray-600 mb-4">
-                Votre score : {score}/{questions.length}
-              </p>
-              <p className="text-emerald-600 font-medium mb-8">{getScoreMessage()}</p>
+              <Award className="w-16 h-16 text-receipt-text mx-auto mb-6" />
+              <h3 className="text-2xl font-receipt text-receipt-text mb-4">FÉLICITATIONS!</h3>
+              <div className="font-receipt text-receipt-text space-y-4">
+                <p>--------------------------------</p>
+                <p className="text-lg">VOTRE SCORE: {score}/{questions.length}</p>
+                <p>--------------------------------</p>
+                <p className="text-receipt-text/80">{getScoreMessage()}</p>
+              </div>
               <button
                 onClick={resetQuiz}
-                className="inline-flex items-center bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                className="mt-8 inline-flex items-center bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-6 py-3 rounded-lg font-receipt transition-colors"
               >
                 <RefreshCw className="w-5 h-5 mr-2" />
-                Recommencer le quiz
+                REJOUER
               </button>
             </motion.div>
           )}

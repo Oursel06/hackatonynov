@@ -1,45 +1,65 @@
-import React from 'react';
-import { Leaf, Facebook, Twitter, Instagram, Youtube, Heart } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Receipt, Heart } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  return (
-    <footer className="bg-emerald-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="flex items-center">
-            <p className="text-emerald-100 mb-6">
-            <Heart size={14} /> <strong>Pour notre planète </strong>
-              Hugo, Fleming, Alexandre et yanis vous proposent <b>d'ensemble</b>, <i>lutter contre le gaspillage alimentaire pour un avenir plus durable et solidaire.</i>
-              <Heart size={14} /> 
-            </p>
-            </div>
+  const [wastedFood, setWastedFood] = useState(0);
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-2">
-              <li><a href="#accueil" className="text-emerald-200 hover:text-white transition-colors">Accueil</a></li>
-              <li><a href="#impact" className="text-emerald-200 hover:text-white transition-colors">Impact</a></li>
-              <li><a href="#statistiques" className="text-emerald-200 hover:text-white transition-colors">Statistiques</a></li>
-              <li><a href="#quiz" className="text-emerald-200 hover:text-white transition-colors">Quiz</a></li>
-              <li><a href="#conseils" className="text-emerald-200 hover:text-white transition-colors">Conseils</a></li>
-            </ul>
+  useEffect(() => {
+    const startTime = Date.now();
+    const INTERVAL_SECONDS = 5;
+    const FOOD_WASTE_PER_SECOND = 41200;
+    
+    const timer = setInterval(() => {
+      const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
+      // On multiplie par le nombre de secondes dans l'intervalle pour avoir le total
+      const foodWasted = secondsElapsed * FOOD_WASTE_PER_SECOND;
+      setWastedFood(foodWasted);
+    }, INTERVAL_SECONDS * 1000); // Conversion en millisecondes
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Fonction pour formater les grands nombres
+  const formatNumber = (num: number): string => {
+    return new Intl.NumberFormat('fr-FR').format(Math.floor(num));
+  };
+
+  return (
+    <footer className="border-t border-dashed border-receipt-border py-8">
+      <div className="container mx-auto px-4">
+        <div className="text-center space-y-4">
+          <div className="font-receipt text-receipt-text">
+            <p>================================</p>
+            <p className="text-xl my-4">TOTAL IMPACT</p>
+            <p>--------------------------------</p>
+            <p className="text-lg">Nourriture gaspillée dans</p>
+            <p className="text-lg">le monde pendant votre visite</p>
+            <p className="text-2xl my-2 text-red-600">{formatNumber(wastedFood)} kg</p>
+            <p className="text-sm text-receipt-text/60">(Mise à jour toutes les 5 secondes)</p>
+            <p>================================</p>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Ressources</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="/doc/gaspillage_alimentaire.pdf"
-                  download="guide_gaspillage_alimentaire.pdf"
-                  className="text-emerald-200 hover:text-white transition-colors"
-                >
-                  Guide Anti-Gaspillage
-                </a>
-              </li>
-              <li><a href="#quiz" className="text-emerald-200 hover:text-white transition-colors">Testez vos connaissances</a></li>
-              <li><a href="#associations" className="text-emerald-200 hover:text-white transition-colors">Nos partenaires</a></li>
-            </ul>
+          <div className="mt-8 space-y-2">
+            <p className="font-receipt text-receipt-text flex items-center justify-center gap-2">
+              <Receipt size={16} />
+              TICKET ÉCOLOGIQUE - NON JETABLE
+              <Receipt size={16} />
+            </p>
+            <p className="font-receipt text-xs text-receipt-text">
+              {new Date().toLocaleString('fr-FR')}
+            </p>
+            <p className="font-receipt text-xs text-receipt-text mb-2">
+              Par Yanis, Alexandre, Fleming et Hugo
+            </p>
+            <p className="font-receipt text-receipt-text flex items-center justify-center">
+              Fait avec <Heart className="mx-1 text-red-500" size={14} /> pour notre planète
+            </p>
+          </div>
+
+          <div className="text-center mt-4 font-receipt text-receipt-text text-sm">
+            <p>*** CONSERVEZ CE TICKET ***</p>
+            <p>IL REPRÉSENTE VOTRE ENGAGEMENT</p>
+            <p>POUR UN MONDE MEILLEUR</p>
           </div>
         </div>
       </div>

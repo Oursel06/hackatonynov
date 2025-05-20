@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Users, Leaf, Bird } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Users, Leaf, Bird, BarChart } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 const categories = [
@@ -133,7 +133,7 @@ const Categories: React.FC = () => {
 		setCurrentIndex((prevIndex) => (prevIndex + newDirection + categories.length) % categories.length);
 	};
 
-	const handleDragEnd = (_: any, { offset, velocity }: { offset: { x: number }, velocity: { x: number } }) => {
+	const handleDragEnd = (_: unknown, { offset, velocity }: { offset: { x: number }, velocity: { x: number } }) => {
 		const swipe = Math.abs(offset.x) * velocity.x;
 		if (swipe < -5000) {
 			paginate(1);
@@ -143,22 +143,29 @@ const Categories: React.FC = () => {
 	};
 
 	return (
-		<section id="impact" className="py-32 bg-emerald-100 overflow-x-hidden [perspective:1000px]">
+		<section id="impact" className="py-16 bg-receipt-paper">
 			<div className="container mx-auto px-4">
-				<motion.div
-					initial={{ opacity: 0, y: 50 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, ease: 'easeOut' }}
-					className="max-w-4xl mx-auto text-center mb-20"
-				>
-					<h2 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-6">
-						Impact sur notre Monde
-					</h2>
-					<p className="text-xl text-emerald-100">
-						Le gaspillage alimentaire affecte profondément notre société, notre faune et notre flore.
-						Découvrez les conséquences sur chaque aspect de notre écosystème.
-					</p>
-				</motion.div>
+				{/* En-tête de section */}
+				<div className="text-center font-receipt text-receipt-text mb-12">
+					<BarChart className="w-8 h-8 mx-auto mb-4" />
+					<p>================================</p>
+					<h2 className="text-3xl my-4">RAPPORT D'IMPACT</h2>
+					<p>CONSÉQUENCES DU GASPILLAGE</p>
+					<p>================================</p>
+					{/* Code-barres décoratif */}
+					<div className="mt-4 flex justify-center gap-1">
+						{Array.from({ length: 20 }).map((_, i) => (
+							<div
+								key={i}
+								className="w-0.5 h-8 bg-receipt-text"
+								style={{
+									opacity: Math.random() * 0.5 + 0.5,
+									height: `${Math.random() * 16 + 24}px`
+								}}
+							/>
+						))}
+					</div>
+				</div>
 
 				<div className="relative max-w-6xl mx-auto">
 					<AnimatePresence initial={false} custom={direction} mode="wait">
@@ -175,54 +182,78 @@ const Categories: React.FC = () => {
 							onDragEnd={handleDragEnd}
 							className="w-full [transform-style:preserve-3d]"
 						>
-							<div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-								<div
+							<div className="bg-receipt-paper border-2 border-dashed border-receipt-border rounded-lg overflow-hidden">
+								<div 
 									className="h-96 bg-cover bg-center relative"
 									style={{ backgroundImage: `url(${categories[currentIndex].image})` }}
 								>
 									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
 									<div className="absolute bottom-0 left-0 right-0 p-10">
 										<div className="flex items-center mb-4">
-											<div
-												className={`w-16 h-16 rounded-full bg-${categories[currentIndex].color}-100 flex items-center justify-center backdrop-blur-sm bg-white/30`}
-											>
+											<div className="w-16 h-16 rounded-full bg-receipt-paper/30 backdrop-blur-sm flex items-center justify-center">
 												{React.createElement(categories[currentIndex].icon, {
-													className: `w-8 h-8 text-${categories[currentIndex].color}-600`,
+													className: "w-8 h-8 text-white"
 												})}
 											</div>
-											<h3 className="ml-6 text-4xl font-bold text-white">
+											<h3 className="ml-6 text-4xl font-receipt text-white">
 												{categories[currentIndex].name}
 											</h3>
 										</div>
 									</div>
 								</div>
-								<div className="p-10">
-									<div className="prose prose-lg max-w-none prose-emerald">
+
+								<div className="p-10 font-receipt">
+									{/* Séparateur décoratif */}
+									<p className="text-receipt-text text-center mb-6">
+										********************************
+									</p>
+
+									<div className="prose prose-lg max-w-none prose-receipt">
 										<ReactMarkdown>{categories[currentIndex].description}</ReactMarkdown>
 									</div>
-									<div className="mt-8 flex justify-end">
-										<a
-											href={categories[currentIndex].learnMoreUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											className={`inline-flex items-center bg-${categories[currentIndex].color}-600 hover:bg-${categories[currentIndex].color}-700 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 group`}
-										>
-											En savoir plus
-											<ChevronRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-										</a>
+
+									{/* Pied de section avec code-barres */}
+									<div className="mt-8">
+										<p className="text-receipt-text text-center mb-4">
+											--------------------------------
+										</p>
+										<div className="flex justify-between items-center">
+											<div className="flex gap-1">
+												{Array.from({ length: 10 }).map((_, i) => (
+													<div
+														key={i}
+														className="w-0.5 h-6 bg-receipt-text"
+														style={{
+															opacity: Math.random() * 0.5 + 0.5,
+															height: `${Math.random() * 12 + 16}px`
+														}}
+													/>
+												))}
+											</div>
+											<a
+												href={categories[currentIndex].learnMoreUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="inline-flex items-center bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-6 py-3 rounded-lg transition-colors group"
+											>
+												EN SAVOIR PLUS
+												<ChevronRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</motion.div>
 					</AnimatePresence>
 
+					{/* Boutons de navigation */}
 					<motion.button
 						variants={buttonVariants}
 						initial="rest"
 						whileHover="hover"
 						whileTap="tap"
 						onClick={() => paginate(-1)}
-						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg text-emerald-600 hover:text-emerald-700 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 bg-receipt-paper/90 backdrop-blur-sm rounded-full p-4 shadow-lg text-receipt-text border-2 border-dashed border-receipt-border hover:bg-receipt-text hover:text-receipt-paper transition-colors z-10"
 					>
 						<ChevronLeft className="w-8 h-8" />
 					</motion.button>
@@ -233,26 +264,41 @@ const Categories: React.FC = () => {
 						whileHover="hover"
 						whileTap="tap"
 						onClick={() => paginate(1)}
-						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg text-emerald-600 hover:text-emerald-700 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 bg-receipt-paper/90 backdrop-blur-sm rounded-full p-4 shadow-lg text-receipt-text border-2 border-dashed border-receipt-border hover:bg-receipt-text hover:text-receipt-paper transition-colors z-10"
 					>
 						<ChevronRight className="w-8 h-8" />
 					</motion.button>
 				</div>
 
+				{/* Indicateurs de page */}
 				<div className="flex justify-center mt-12 gap-2">
 					{categories.map((_, index) => (
 						<motion.button
 							key={index}
 							variants={indicatorVariants}
-							animate={index === currentIndex ? 'selected' : 'notSelected'}
+							animate={index === currentIndex ? "selected" : "notSelected"}
 							onClick={() => {
 								setDirection(index > currentIndex ? 1 : -1);
 								setCurrentIndex(index);
 							}}
 							className={`h-3 rounded-full transition-all duration-300 ${
-								index === currentIndex ? 'bg-emerald-600' : 'bg-emerald-200 hover:bg-emerald-100'
+								index === currentIndex ? 'bg-receipt-text' : 'bg-receipt-text/20 hover:bg-receipt-text/40'
 							}`}
 							aria-label={`Aller à la section ${categories[index].name}`}
+						/>
+					))}
+				</div>
+
+				{/* Code-barres décoratif du bas */}
+				<div className="mt-12 flex justify-center gap-1">
+					{Array.from({ length: 30 }).map((_, i) => (
+						<div
+							key={i}
+							className="w-0.5 bg-receipt-text"
+							style={{
+								opacity: Math.random() * 0.5 + 0.5,
+								height: `${Math.random() * 20 + 20}px`
+							}}
 						/>
 					))}
 				</div>
