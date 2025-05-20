@@ -10,7 +10,7 @@ interface TipCardProps {
 
 const TipCard: React.FC<TipCardProps> = ({ icon, title, description, delay = 0 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -23,20 +23,20 @@ const TipCard: React.FC<TipCardProps> = ({ icon, title, description, delay = 0 }
       },
       { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
     );
-    
+
     if (cardRef.current) {
       observer.observe(cardRef.current);
     }
-    
+
     return () => {
       if (cardRef.current) {
         observer.unobserve(cardRef.current);
       }
     };
   }, [delay]);
-  
+
   return (
-    <div 
+    <div
       ref={cardRef}
       className="bg-white rounded-lg shadow-md p-6 flex flex-col h-full opacity-0 translate-y-8 transition-all duration-700 ease-out hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
     >
@@ -45,19 +45,13 @@ const TipCard: React.FC<TipCardProps> = ({ icon, title, description, delay = 0 }
       </div>
       <h3 className="text-xl font-semibold text-emerald-800 mb-3">{title}</h3>
       <p className="text-gray-600 flex-grow">{description}</p>
-      <button className="mt-6 text-emerald-600 font-medium hover:text-emerald-800 inline-flex items-center transition-colors">
-        En savoir plus
-        <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </button>
     </div>
   );
 };
 
 const Tips: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -68,24 +62,34 @@ const Tips: React.FC = () => {
       },
       { threshold: 0.1 }
     );
-    
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
+
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
-  
+
+  // Fonction pour télécharger le PDF
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/doc/gaspillage_alimentaire.pdf";
+    link.download = "guide_gaspillage_alimentaire.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <section 
-      id="conseils" 
-      className="py-20 bg-emerald-50"
+    <section
+      id="conseils"
+      className="py-20 bg-gradient-to-b from-amber-50 to-white"
     >
-      <div 
+      <div
         ref={sectionRef}
         className="container mx-auto px-4 opacity-0 transition-opacity duration-1000"
       >
@@ -95,36 +99,39 @@ const Tips: React.FC = () => {
             Découvrez des astuces simples et efficaces pour réduire le gaspillage alimentaire au quotidien. Chaque petit geste compte!
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <TipCard 
+          <TipCard
             icon={<CalendarClock size={24} />}
             title="Planifiez vos repas"
-            description="Établissez un menu hebdomadaire et faites une liste de courses en fonction de vos besoins réels pour éviter les achats impulsifs."
+            description="Élaborez un menu hebdomadaire et faites une liste de courses ciblée. Cela vous évite les achats inutiles et limite le gaspillage dès l’achat."
             delay={0}
           />
-          <TipCard 
+          <TipCard
             icon={<ShoppingCart size={24} />}
-            title="Achetez malin"
-            description="Privilégiez les produits locaux et de saison, vérifiez les dates de péremption et n'hésitez pas à prendre des fruits et légumes 'imparfaits'."
+            title="Achetez avec bon sens"
+            description="Privilégiez les fruits et légumes moches mais bons, et vérifiez bien les dates de péremption. Cela soutient les producteurs locaux et limite le gaspillage en amont."
             delay={200}
           />
-          <TipCard 
+          <TipCard
             icon={<RefrigeratorIcon size={24} />}
-            title="Conservez correctement"
-            description="Organisez votre réfrigérateur, respectez la chaîne du froid et utilisez des contenants hermétiques pour prolonger la durée de vie des aliments."
+            title="Stockez intelligemment"
+            description="Rangez correctement votre frigo, respectez la chaîne du froid et utilisez des boîtes hermétiques. Vous évitez ainsi les pertes liées au mauvais stockage."
             delay={400}
           />
-          <TipCard 
+          <TipCard
             icon={<Recycle size={24} />}
-            title="Valorisez les restes"
-            description="Transformez vos restes en nouveaux plats, congelez ce que vous ne consommerez pas immédiatement ou compostez les déchets organiques."
+            title="Cuisine anti-gaspillage"
+            description="Réalisez des plats créatifs avec les restes, congelez si besoin, ou compostez les déchets organiques. Rien ne se perd, tout se transforme !"
             delay={600}
           />
         </div>
-        
+
         <div className="mt-16 text-center">
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+          <button
+            onClick={handleDownload}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+          >
             Télécharger notre guide complet
           </button>
         </div>
