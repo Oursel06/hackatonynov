@@ -119,7 +119,7 @@ const Associations: React.FC = () => {
 						>
 							{/* Image de l'association */}
 							<div
-								className="h-64 bg-cover bg-center rounded-lg mb-6"
+								className="relative h-64 bg-cover bg-center rounded-lg mb-6"
 								style={{ backgroundImage: `url(${associations[currentIndex].image})` }}
 							>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg"></div>
@@ -148,17 +148,6 @@ const Associations: React.FC = () => {
 										<MailIcon className="w-4 h-4" />
 										<p>{associations[currentIndex].email}</p>
 									</div>
-									<div className="flex items-center gap-2">
-										<LinkIcon className="w-4 h-4" />
-										<a
-											href={associations[currentIndex].website}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="hover:text-emerald-600 transition-colors"
-										>
-											{associations[currentIndex].website.replace('https://', '')}
-										</a>
-									</div>
 								</div>
 
 								<div className="text-center">
@@ -170,6 +159,15 @@ const Associations: React.FC = () => {
 											? 'PLATEFORME'
 											: 'ENTREPRISE SOCIALE'}
 									</p>
+									<br/>
+									<a
+										href={associations[currentIndex].website}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-6 py-2 rounded-lg transition-colors"
+									>
+										{associations[currentIndex].website.replace('https://', '')}
+									</a>
 								</div>
 							</div>
 						</motion.div>
@@ -216,16 +214,6 @@ const Associations: React.FC = () => {
 							aria-label={`Aller à l'association ${index + 1}`}
 						/>
 					))}
-				</div>
-
-				{/* Bouton d'action */}
-				<div className="mt-16 text-center">
-					<button className="font-receipt bg-receipt-text text-receipt-paper hover:bg-receipt-text/90 px-8 py-3 rounded-lg transition-colors">
-						DEVENIR PARTENAIRE
-					</button>
-					<p className="mt-4 font-receipt text-xs text-receipt-text/60">
-						* Rejoignez notre réseau d'acteurs engagés
-					</p>
 				</div>
 			</div>
 		</section>
