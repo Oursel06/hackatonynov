@@ -1,6 +1,6 @@
 import React from 'react';
-import { Menu, X } from 'lucide-react';
 import Hero from './components/Hero';
+import Categories from './components/Categories';
 import Stats from './components/Stats';
 import Tips from './components/Tips';
 import Quiz from './components/Quiz';
@@ -21,6 +21,7 @@ function App() {
       
       <main>
         <Hero />
+        <Categories />
         <Stats />
         <Quiz />
         <Tips />
