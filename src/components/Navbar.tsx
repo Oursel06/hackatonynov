@@ -27,8 +27,6 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, toggleMobileMenu }) => 
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Leaf className="h-8 w-8 text-emerald-600" />
-          <span className="ml-2 text-xl font-bold text-emerald-800">ÉcoNourrir</span>
         </div>
         
         {/* Desktop Navigation */}

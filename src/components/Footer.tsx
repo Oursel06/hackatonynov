@@ -7,10 +7,6 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center mb-4">
-              <Leaf className="h-8 w-8 text-emerald-400" />
-              <span className="ml-2 text-xl font-bold">ÉcoNourrir</span>
-            </div>
             <p className="text-emerald-100 mb-6">
               Ensemble, luttons contre le gaspillage alimentaire pour un avenir plus durable et solidaire.
             </p>
