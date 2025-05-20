@@ -15,42 +15,29 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
-/** Hero section **/
-
-
-.container {
-  position: relative;
-  width: 600px;
-  height: 300px;
-  max-width: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-
+header {
+  height: 8dvh;
 }
 
-.image {
-  position: absolute;
-  top: 0;
-  left: 0;
+.headings {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  user-select: none;
-  pointer-events: none;
+  top: 30%;
+  text-align: center;
 }
 
-.image-after {
-  clip-path: inset(0 100% 0 0); /* image "après" visible à 100% au départ */
-  transition: clip-path 0.5s ease;
+.headings h1 {
+  color: #f1f1f1;
+  font-size: 7rem;
+  font-weight: 900;
+  text-shadow: 0 3px 10px crimson ;
 }
+.headings h2 {
+  color: #f1f1f1;
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 0 1px 4px #000000;
 
-.image-after.no-transition {
-  transition: none !important;
 }
-
-
-
-
 
 
 /* Scrollbar customization */

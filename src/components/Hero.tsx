@@ -77,6 +77,11 @@ const Hero: React.FC = () => {
               style={{ clipPath: 'inset(0 100% 0 0)' }}
               alt="Après"
           />
+          <div className="absolute headings">
+            <h1>Gaspiller c'est tuer</h1>
+            <h2>Le gaspillage alimentaire a un coût...</h2>
+          </div>
+
         </div>
 
         <style jsx>{`
